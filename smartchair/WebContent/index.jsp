@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	123456
+	123456789
 	<input type="button" value="testJson" id="testJson"/>查询全部菜品<br>
 	修改菜品
 	<form action="menuController/updateMenuById" method="post">
