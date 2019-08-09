@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.spring.mapper.FormMapper">
+		<select id="queryAllFormById" resultMap="form_time" parameterType="int">
+			select * from form,time,guest WHERE form.f_id=time.f_id and g_id=#{g_id}
+		</select>
+		
+		<select id="queryAllForm" resultMap="form_time">
+			select * from form,time,guest WHERE form.f_id=time.f_id
+		</select>
+		<resultMap type="org.spring.entity.Form" id="form_time">
+			<id property="f_id" column="f_id"/>
+			<result property="r_id" column="r_id"/>
+			<association property="guest" javaType="org.spring.entity.Guest">
+				<id property="g_id" column="g_id"/>
+				<result property="u_id" column="u_id"/>
+				<result property="c_id" column="c_id"/>
+			</association>
+			<collection property="times" ofType="org.spring.entity.Time">
+				<id property="t_id" column="t_id"/>
+				<result property="f_state" column="f_state"/>
+				<result property="f_food" column="f_food"/>
+				<result property="f_money" column="f_money"/>
+				<result property="f_date" column="f_date"/>
+				<result property="f_id" column="f_id"/>
+			</collection>
+		</resultMap>
+		<insert id="insertFormById">
+			INSERT into time(f_state,f_food,f_money,f_date,f_id)  values (#{f_state},#{f_food},#{f_money},#{f_date},#{f_id})
+		</insert>
+		
+		<update id="updateFormById">
+			update time set f_state=#{f_state},f_food=#{f_food},f_money=#{f_money},f_id=#{f_id} where t_id=#{t_id}
+		</update>
+</mapper>

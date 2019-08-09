@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.spring.mapper.ChairMapper">
+	<select id="queryAllChair"  resultType="org.spring.entity.Chair">
+		select * from chair
+	</select>
+	
+	<update id="updateChairById" parameterType="org.spring.entity.Chair">
+		update chair set c_state=#{c_state},c_mac=#{c_mac},c_number=#{c_number},c_tele=#{c_tele},c_produce=#{c_produce} where c_id=#{c_id}
+	</update>
+	
+	
+	<delete id="deleteChairById" parameterType="int">
+		delete from chair where c_id=#{c_id}
+	</delete>
+	
+	<insert id="insertChair" parameterType="org.spring.entity.Chair">
+		insert into chair (c_mac,c_number,c_tele,c_produce,c_state) values ('${c_mac}','${c_number}','${c_tele}','${c_produce}','${c_state}')
+	</insert>
+</mapper>

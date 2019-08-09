@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.spring.mapper.MenuMapper">
+	<select id="queryAllMenu"  resultType="org.spring.entity.Menu">
+		select * from menu
+	</select>
+	
+	<update id="updateMenuById" parameterType="org.spring.entity.Menu">
+		update menu set m_exit=#{m_exit},m_price=#{m_price},m_introduce=#{m_introduce},m_picture=#{m_picture},m_name=#{m_name} where m_id=#{m_id}
+	</update>
+	
+	
+	<delete id="deleteMenuById" parameterType="int">
+		delete from menu where m_id=#{m_id}
+	</delete>
+	
+	<insert id="insertMenu" parameterType="org.spring.entity.Menu">
+		insert into menu (m_name,m_price,m_introduce,m_picture,m_exit) values ('${m_name}','${m_price}','${m_introduce}','${m_picture}',${m_exit})
+	</insert>
+</mapper>

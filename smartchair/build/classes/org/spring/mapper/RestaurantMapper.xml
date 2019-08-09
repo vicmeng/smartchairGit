@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.spring.mapper.RestaurantMapper">
+	<select id="queryAllRestaurant" resultType="org.spring.entity.Restaurant">
+		SELECT * FROM restaurant
+	</select>
+	
+	<select id="queryRestaurantById" resultType="org.spring.entity.Restaurant" parameterType="int">
+		SELECT * FROM restaurant where r_id=#{r_id}
+	</select>
+	
+	<delete id="deleteRestaurantById" parameterType="int">
+		DELETE from restaurant where r_id=#{r_id}
+	</delete>
+	
+	<update id="updateRestaurantById" parameterType="org.spring.entity.Restaurant">
+		update restaurant set r_name=#{r_name},r_position=#{r_position},r_picture=#{r_picture} where r_id =#{r_id}
+	</update>
+	
+	<insert id="insertRestaurant" parameterType="org.spring.entity.Restaurant">
+		insert into restaurant (r_name,r_position,r_picture,r_tele) values ('${r_name}','${r_position}','${r_picture}',#{r_tele})
+	</insert>
+	
+</mapper>

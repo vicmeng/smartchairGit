@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.spring.mapper.UserMapper">
+	<select id="queryUserById" resultType="org.spring.entity.User" parameterType="int">
+		select * from user where u_id=#{u_id}
+	</select>
+	<insert id="insertUser" parameterType="org.spring.entity.User">
+		insert into person(u_username,u_password,u_name,u_queue,u_number) values (#{u_username},#{u_password},#{u_name},#{u_queue},#{u_number})
+	</insert>
+	<delete id="deleteUserById" parameterType="int">
+		delete from user where u_id=#{u_id}
+	</delete> 
+	<update id="updateUserById" parameterType="org.spring.entity.User">
+		update user set u_username=#{u_username},u_password=#{u_password},u_name=#{u_name},u_queue=#{u_queue},u_number=#{u_number} where u_id =#{u_id}
+	</update>
+	<select id="queryAllUserById" resultType="org.spring.entity.User" parameterType="int">
+		select * from user 
+	</select>
+</mapper>
